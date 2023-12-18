@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="./styles/rockPaperScissors.css">
+    </head>
+    <body>
+        <p class="title">Rock Paper Scissors</p>
+        <!-- the first way
+        <button onclick="playGame('rock');" class="button"><img src="./images/rock-emoji.png" class="icon"></button>
+        <button onclick="playGame('paper');" class="button"><img src="./images/paper-emoji.png" class="icon"></button>
+        <button onclick="playGame('scissors');" class="button"><img src="./images/scissors-emoji.png" class="icon"></button><br><br> -->
+
+        <!-- the second way -->
+        <button class="button js-rock"><img src="./images/rock-emoji.png" class="icon"></button>
+        <button class="button js-paper"><img src="./images/paper-emoji.png" class="icon"></button>
+        <button class="button js-scissors"><img src="./images/scissors-emoji.png" class="icon"></button><br><br>
+
+
+        <p class="js-result result"></p>
+        <p class="js-choice"></p>
+        <!-- p occupies the entire line -->
+        <p class="js-score score">Start the game.</p>
+        
+        <button onclick="reset();" class="reset">Reset Score</button>
+        <button onclick="autoPlay();" class="auto-play">Auto Play</button>
+
+        <p>Use keyboard to play</p>
+        <p>r - rock, p - paper, s-scissors</p>
+
+        <script src="./scripts/rockPaperScissors.js"></script>
+    </body>
+</html>

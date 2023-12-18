@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Projects</title>
+        <link rel="stylesheet" href="./styles/exercises.css">
+    </head>
+    <body>
+        <!-- submit name -->
+        <input class="js-input" placeholder="enter your name" onkeydown="hitEnter1(event)">
+        <button class="js-submit" onclick="submit()">submit</button>
+        <p class="js-name"></p><br>
+
+        <!-- subscription button -->
+        <p>Please subscribe!</p>
+        <button onclick="subscribe()" class="js-subscribe-button subscribe-button"> Subscribe </button><br><br>
+
+        <!-- shipping calculater -->
+        <p>Shipping calculator</p>
+        <p>$10 shipping for orders under $40.</p>
+        <p>free shipping for orders over $40.</p>
+        <!-- event.key shows the value entered by the user -->
+        <!-- user should be able to submit the cost by hitting Enter -->
+        <input class="js-cost" placeholder="Enter cost of order" onkeydown="hitEnter2(event)">
+        <button class="js-cost-button" onclick="calculate()">Calculate</button><br><br><br>
+        <p class="js-result"></p>
+
+        <!-- three buttons -->
+        <button class="js-gaming-button" onclick="clicked('.js-gaming-button')">Gaming</button>
+        <button class="js-music-button" onclick="clicked('.js-music-button')">Music</button>
+        <button class="js-tech-button" onclick="clicked('.js-tech-button')">Tech</button>
+        
+        <script src="./scripts/exercises.js"></script>
+    </body>
+</html>

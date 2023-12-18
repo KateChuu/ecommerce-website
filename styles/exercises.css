@@ -1,0 +1,56 @@
+.js-submit {
+    border: none;
+    background-color: crimson;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-left: 10px;
+}
+.subscribe-button {
+    border: none;
+    background-color: black;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+.is-subscribed {
+    background-color: rgb(240, 240, 240);
+    color: black;
+}
+.js-cost {
+    font-size: 15px;
+    padding: 10px;
+}
+.js-cost-button {
+    border: none;
+    background-color: mediumaquamarine;
+    border-radius: 20px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 12px 15px; /* paddind-top/botton, paddint-left/right */
+    cursor: pointer;
+}
+body {
+    font-family: Arial;
+}
+.is-toggled {
+    color: white;
+    background-color: black;
+}
+.js-gaming-button, .js-music-button, .js-tech-button {
+    border: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
