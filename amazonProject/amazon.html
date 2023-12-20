@@ -45,19 +45,20 @@
 
         <a class="cart-link header-link" href="checkout.html">
           <img class="cart-icon" src="images/icons/cart-icon.png">
-          <div class="cart-quantity">3</div>
+          <div class="cart-quantity js-cart-quantity">0</div>
           <div class="cart-text">Cart</div>
         </a>
       </div>
     </div>
     
     <div class="main">
-      <div class="products-grid js-product-grid">
+      <div class="products-grid js-products-grid">
       </div>
     </div>
 
     <!-- first load the product data from product.js -->
     <!-- the order is super important or the code won't work!!!!!!!!!!!!!! -->
+    <script src="./data/cart.js"></script>
     <script src="./data/products.js"></script>
     <script src="./scripts/amazon.js"></script>
   </body>

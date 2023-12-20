@@ -39,10 +39,44 @@ products.forEach((product) => {
             Added
         </div>
 
-        <button class="add-to-cart-button button-primary">
+        <button class="add-to-cart-button button-primary js-add-to-cart" 
+            data-product-id="${product.id}"> <!--create a new html attribute to distinguish which button was clicked-->
             Add to Cart
         </button>
     </div>`;
 });
 
-document.querySelector('.js-product-grid').innerHTML = productHTML;
+document.querySelector('.js-products-grid').innerHTML = productHTML;
+// use querySelectAll to select the elements which are not displayed yet?
+document.querySelectorAll('.js-add-to-cart').forEach((button) => {
+    button.addEventListener('click', () => {
+        // dataset gives us all the attribute owned by that object
+        // print all the attributes in console to check the each attribute name in order to use it
+        const id = button.dataset.productId; 
+
+        // loop through cart to check the product is in the cart or not
+        let match;
+        cart.forEach((item) => {
+            if(item.productId === id) {
+                match = item;
+            }
+        });
+        // the item is already in the cart, so we increase the quantity
+        if(match) {
+            match.quantity += 1;
+        }else { // the item is not in the cart yet
+            cart.push({
+                productId: id,
+                quantity: 1
+            });
+        }        
+        console.log(cart);
+
+        // update the total quantity
+        let total = 0;
+        cart.forEach((item) => {
+            total += item.quantity;
+        });
+        document.querySelector('.js-cart-quantity').innerHTML = total;
+    });
+});
