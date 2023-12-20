@@ -1,5 +1,5 @@
 // export variables and functions so we can use them in other files
-export const cart = [{
+export let cart = [{
     id: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
     quantity: 2
 }, {
@@ -24,4 +24,15 @@ export function addToCart(id) {
             quantity: 1
         });
     }        
+}
+
+export function removeFromCart(id) {
+    // create a new array and add everything in the cart except for the product we want to delete
+    const newCart = [];
+    cart.forEach((item) => {
+        if(item.id !== id) {
+            newCart.push(item);
+        }
+    });
+    cart = newCart;
 }

@@ -1,5 +1,6 @@
 import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
+import { formatCents } from './utils/money.js';
 // must be in the first line and be used with live server
 // we can use {cart as myCart} to rename the variable
 
@@ -20,7 +21,7 @@ products.forEach((product) => {
             <div class="product-rating-count link-primary">${product.rating.count}</div>
         </div>
         <!--show the float in 2 decimal-->
-        <div class="product-price">${(product.priceCents / 100).toFixed(2)}</div>
+        <div class="product-price">${formatCents(product.priceCents)}</div>
 
         <div class="product-quantity-container">
             <select>
