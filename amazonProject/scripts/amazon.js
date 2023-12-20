@@ -1,3 +1,8 @@
+import {cart, addToCart} from '../data/cart.js';
+import {products} from '../data/products.js';
+// must be in the first line and be used with live server
+// we can use {cart as myCart} to rename the variable
+
 let productHTML = '';
 products.forEach((product) => {
     productHTML += `
@@ -47,36 +52,23 @@ products.forEach((product) => {
 });
 
 document.querySelector('.js-products-grid').innerHTML = productHTML;
-// use querySelectAll to select the elements which are not displayed yet?
+
+function updateQuantity() {
+    // update the total quantity
+    let total = 0;
+    cart.forEach((item) => {
+        total += item.quantity;
+    });
+    document.querySelector('.js-cart-quantity').innerHTML = total;
+}
+
+// use querySelectAll to select all the elements which have the same class
 document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
         // dataset gives us all the attribute owned by that object
         // print all the attributes in console to check the each attribute name in order to use it
         const id = button.dataset.productId; 
-
-        // loop through cart to check the product is in the cart or not
-        let match;
-        cart.forEach((item) => {
-            if(item.productId === id) {
-                match = item;
-            }
-        });
-        // the item is already in the cart, so we increase the quantity
-        if(match) {
-            match.quantity += 1;
-        }else { // the item is not in the cart yet
-            cart.push({
-                productId: id,
-                quantity: 1
-            });
-        }        
-        console.log(cart);
-
-        // update the total quantity
-        let total = 0;
-        cart.forEach((item) => {
-            total += item.quantity;
-        });
-        document.querySelector('.js-cart-quantity').innerHTML = total;
+        addToCart(id); // this function is in cart.js
+        updateQuantity();
     });
 });

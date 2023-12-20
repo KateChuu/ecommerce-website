@@ -56,10 +56,10 @@
       </div>
     </div>
 
-    <!-- first load the product data from product.js -->
+    <!-- if we don't use module, first load the product data from product.js -->
     <!-- the order is super important or the code won't work!!!!!!!!!!!!!! -->
-    <script src="./data/cart.js"></script>
-    <script src="./data/products.js"></script>
-    <script src="./scripts/amazon.js"></script>
+    <!-- but we can't create variables with same names in the js files, so we use module instead -->
+    <script type="module" src="./scripts/amazon.js"></script>
+    <!-- type module means we want to use module in this js file -->
   </body>
 </html>
