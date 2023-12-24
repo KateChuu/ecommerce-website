@@ -46,7 +46,7 @@ products.forEach((product) => {
         </div>
 
         <button class="add-to-cart-button button-primary js-add-to-cart" 
-            data-product-id="${product.id}"> <!--create a new html attribute to distinguish which button was clicked-->
+            data-id="${product.id}"> <!--create a new html attribute to distinguish which button was clicked-->
             Add to Cart
         </button>
     </div>`;
@@ -68,8 +68,9 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) => {
     button.addEventListener('click', () => {
         // dataset gives us all the attribute owned by that object
         // print all the attributes in console to check the each attribute name in order to use it
-        const id = button.dataset.productId; 
+        const id = button.dataset.id; 
         addToCart(id); // this function is in cart.js
+        console.log(id);
         updateQuantity();
     });
 });
