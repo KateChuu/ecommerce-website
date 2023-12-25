@@ -1,7 +1,7 @@
 import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
-import {products} from '../../data/products.js';
+import {products, getProduct} from '../../data/products.js';
 import {formatCents} from '../utils/money.js';
-import {deliveryOptions} from '../../data/deliveryOptions.js';
+import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; 
 // use module to load external ESM library
 // default export: if we only import one thing, we don't have to type {}. Each file can only have one default export 
@@ -11,20 +11,10 @@ export function displayOrderSummary() {
     cart.forEach((item) => {
         const id = item.id;
         // the product we put in the cart
-        let match = '';
-        products.forEach((product) => {
-            if(product.id === id) {
-                match = product;
-            }
-        });
+        const match = getProduct(id);
+        // the delivery option we choose
+        const option = getDeliveryOption(item.deliveryId);
 
-        const deliveryId = item.deliveryId;
-        let option;
-        deliveryOptions.forEach((i) => {
-            if(i.id === deliveryId) {
-                option = i;
-            }
-        });
         const today = dayjs();
         // add value of option.deliveryDays to today
         const deliveryDate = today.add(option.deliveryDays, 'days');
