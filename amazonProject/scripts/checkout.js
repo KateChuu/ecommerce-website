@@ -1,4 +1,4 @@
-import {cart, removeFromCart} from '../data/cart.js';
+import {cart, removeFromCart, updateDeliveryOption} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCents} from './utils/money.js';
 import {deliveryOptions} from '../data/deliveryOptions.js';
@@ -7,7 +7,6 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 // default export: if we only import one thing, we don't have to type {}. Each file can only have one default export 
 
 let html = '';
-console.log(cart);
 cart.forEach((item) => {
     const id = item.id;
     // the product we put in the cart
@@ -93,7 +92,8 @@ function displayDeliveryOptions(match, item) {
         const isChecked = option.id === item.deliveryId;
 
         html += `
-        <div class="delivery-option">
+        <div class="delivery-option js-delivery-option"
+        data-product-id="${match.id}" data-delivery-id="${option.id}">
             <input type="radio" 
             ${isChecked ? 'checked': ''}
             class="delivery-option-input"
@@ -107,3 +107,11 @@ function displayDeliveryOptions(match, item) {
     });
     return html;
 }
+
+document.querySelectorAll('.js-delivery-option').forEach((object) => {
+    object.addEventListener('click', () =>{
+        const productId = object.dataset.productId;
+        const deliveryId = object.dataset.deliveryId;
+        updateDeliveryOption(productId, deliveryId);
+    });    
+});
