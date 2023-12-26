@@ -2,6 +2,7 @@ import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
 import {products, getProduct} from '../../data/products.js';
 import {formatCents} from '../utils/money.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js';
+import { displayPaymentSummary } from './paymentSummary.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; 
 // use module to load external ESM library
 // default export: if we only import one thing, we don't have to type {}. Each file can only have one default export 
@@ -67,6 +68,8 @@ export function displayOrderSummary() {
             // remove the item from the page
             const container = document.querySelector(`.js-cart-item-container-${id}`);
             container.remove();
+
+            displayPaymentSummary();
         });
     });
 
@@ -104,8 +107,10 @@ export function displayOrderSummary() {
             const productId = object.dataset.productId;
             const deliveryId = object.dataset.deliveryId;
             updateDeliveryOption(productId, deliveryId);
-            // re-run the html so the estimated delivery date changes without refreshing the page manually
+
+            // re-generate all the html so the estimated delivery date changes without refreshing the page manually
             displayOrderSummary();
+            displayPaymentSummary();
         });    
     });
 }
